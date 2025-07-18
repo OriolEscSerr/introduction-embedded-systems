@@ -1,6 +1,8 @@
 # Introduction to Embedded Systems Software and Development Environments  
 **Coursera • University of Colorado Boulder**
 
+![IMG_20170302_144335-01 (1)](https://github.com/user-attachments/assets/fb59b093-62bd-40b9-a537-283cd5c85a5f)
+
 This repository contains coursework and code developed during the Coursera course **"Introduction to Embedded Systems Software and Development Environments"** taught by Professor Alex Fosdick from the University of Colorado Boulder.  
 [Course link →](https://www.coursera.org/learn/introduction-embedded-systems)
 
