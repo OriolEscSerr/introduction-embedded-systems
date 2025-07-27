@@ -9,6 +9,15 @@
 #
 #*****************************************************************************
 
+#------------------------------------------------------------------------------
+# This file is used to define the sources and includes for the project 
+# depending on the platform selected (HOST or MSP432).
+#
+# File: sources.mk
+# Author: Oriol Escolà Serra
+# Date: 26/07/2025
+#------------------------------------------------------------------------------
+
 ifeq ($(PLATFORM),MSP432)
 
 SOURCES = 	./main.c \
@@ -25,7 +34,6 @@ else
 
 SOURCES =	./main.c \
 			./memory.c
-
 
 INCLUDES = 	-I../include/common
 
