@@ -37,6 +37,7 @@ include sources.mk
 
 # Executable
 EXECUTABLE := c1m2.out
+MAPFILE := c1m2.map
 
 # Clean files
 CLEANFILES := *.map *.out *.asm *.i *.d *.s *.o
@@ -52,7 +53,7 @@ SPECS       = -specs=nosys.specs                          # No system specs
 # Compiler Flags and Defines
 CC          = arm-none-eabi-gcc                            # Compiler
 LD          = arm-none-eabi-gcc                            # Linker
-LDFLAGS     = $(LINKER_FILE) $(CPU) $(ARCH) $(SPECS)       # Linker flags
+LDFLAGS     = $(LINKER_FILE) $(CPU) $(ARCH) $(SPECS) -Wl-Map=$(MAPFILE)
 CFLAGS      = -Wall -g -O0 -std=c99 $(CPU) $(ARCH) -MMD -MP # Compiler flags
 CPPFLAGS    = -D$(PLATFORM) $(INCLUDES)                    # Preprocessor flags
 
