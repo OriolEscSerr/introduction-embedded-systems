@@ -41,9 +41,6 @@ EXECUTABLE := c1m2.out
 # Clean files
 CLEANFILES := *.map *.out *.asm *.i *.d *.s *.o
 
-# Platform Override
-PLATFORM := $(if $(PLATFORM), $(PLATFORM), HOST)
-
 ifeq ($(PLATFORM), MSP432)
 
 # Architectures Specific Flags
@@ -56,7 +53,7 @@ SPECS       = -specs=nosys.specs                          # No system specs
 CC          = arm-none-eabi-gcc                            # Compiler
 LD          = arm-none-eabi-gcc                            # Linker
 LDFLAGS     = $(LINKER_FILE) $(CPU) $(ARCH) $(SPECS)       # Linker flags
-CFLAGS      = -Wall -Werror -g -O0 -std=c99 $(CPU) $(ARCH) # Compiler flags
+CFLAGS      = -Wall -g -O0 -std=c99 $(CPU) $(ARCH) -MMD -MP # Compiler flags
 CPPFLAGS    = -D$(PLATFORM) $(INCLUDES)                    # Preprocessor flags
 
 # Tools
@@ -68,7 +65,7 @@ else
 CC          = gcc                                          # Compiler
 LD          = gcc                                          # Linker
 LDFLAGS     =                                              # Linker flags
-CFLAGS      = -Wall -Werror -g -O0 -std=c99                # Compiler flags
+CFLAGS      = -Wall -Werror -g -O0 -std=c99 -MMD -MP       # Compiler flags
 CPPFLAGS    = -D$(PLATFORM) $(INCLUDES)                    # Preprocessor flags
 
 # Tools
