@@ -53,7 +53,7 @@ SPECS       = -specs=nosys.specs
 # Compiler Flags and Defines
 CC          = arm-none-eabi-gcc
 LD          = arm-none-eabi-gcc
-LDFLAGS     = $(LINKER_FILE) $(CPU) $(ARCH) $(SPECS) -Wl-Map=$(MAPFILE)
+LDFLAGS     = $(LINKER_FILE) $(CPU) $(ARCH) $(SPECS) -Wl,-Map=$(MAPFILE)
 CFLAGS      = -Wall -g -O0 -std=c99 $(CPU) $(ARCH) -MMD -MP
 CPPFLAGS    = -D$(PLATFORM) $(INCLUDES)
 
