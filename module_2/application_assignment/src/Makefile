@@ -59,6 +59,9 @@ LDFLAGS     = $(LINKER_FILE) $(CPU) $(ARCH) $(SPECS)       # Linker flags
 CFLAGS      = -Wall -Werror -g -O0 -std=c99 $(CPU) $(ARCH) # Compiler flags
 CPPFLAGS    = -D$(PLATFORM) $(INCLUDES)                    # Preprocessor flags
 
+# Tools
+SIZE        = arm-none-eabi-size						   # Size command
+
 else
 
 # Compiler Flags and Defines
@@ -67,6 +70,9 @@ LD          = gcc                                          # Linker
 LDFLAGS     =                                              # Linker flags
 CFLAGS      = -Wall -Werror -g -O0 -std=c99                # Compiler flags
 CPPFLAGS    = -D$(PLATFORM) $(INCLUDES)                    # Preprocessor flags
+
+# Tools
+SIZE        = size										   # Size command
 
 endif
 
@@ -91,6 +97,9 @@ compile-all: $(OBJS)
 # Build
 .PHONY: build
 build: $(EXECUTABLE)
+	@echo "\nMemory utilization for $(EXECUTABLE):"
+	@$(SIZE) $(EXECUTABLE)
+	@echo
 
 $(EXECUTABLE): $(OBJS)
 	$(CC) $(LDFLAGS) -o $@ $^
