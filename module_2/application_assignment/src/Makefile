@@ -45,32 +45,32 @@ CLEANFILES := *.map *.out *.asm *.i *.d *.s *.o
 ifeq ($(PLATFORM), MSP432)
 
 # Architectures Specific Flags
-LINKER_FILE = -T ../msp432p401r.lds                       # Linker script
+LINKER_FILE = -T ../msp432p401r.lds
 CPU         = -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16
-ARCH        = -march=armv7e-m                             # Architecture
-SPECS       = -specs=nosys.specs                          # No system specs
+ARCH        = -march=armv7e-m
+SPECS       = -specs=nosys.specs
 
 # Compiler Flags and Defines
-CC          = arm-none-eabi-gcc                            # Compiler
-LD          = arm-none-eabi-gcc                            # Linker
+CC          = arm-none-eabi-gcc
+LD          = arm-none-eabi-gcc
 LDFLAGS     = $(LINKER_FILE) $(CPU) $(ARCH) $(SPECS) -Wl-Map=$(MAPFILE)
-CFLAGS      = -Wall -g -O0 -std=c99 $(CPU) $(ARCH) -MMD -MP # Compiler flags
-CPPFLAGS    = -D$(PLATFORM) $(INCLUDES)                    # Preprocessor flags
+CFLAGS      = -Wall -g -O0 -std=c99 $(CPU) $(ARCH) -MMD -MP
+CPPFLAGS    = -D$(PLATFORM) $(INCLUDES)
 
 # Tools
-SIZE        = arm-none-eabi-size						   # Size command
+SIZE        = arm-none-eabi-size
 
 else
 
 # Compiler Flags and Defines
-CC          = gcc                                          # Compiler
-LD          = gcc                                          # Linker
-LDFLAGS     =                                              # Linker flags
-CFLAGS      = -Wall -Werror -g -O0 -std=c99 -MMD -MP       # Compiler flags
-CPPFLAGS    = -D$(PLATFORM) $(INCLUDES)                    # Preprocessor flags
+CC          = gcc
+LD          = gcc
+LDFLAGS     =
+CFLAGS      = -Wall -Werror -g -O0 -std=c99 -MMD -MP
+CPPFLAGS    = -D$(PLATFORM) $(INCLUDES)
 
 # Tools
-SIZE        = size										   # Size command
+SIZE        = size
 
 endif
 
