@@ -10,32 +10,92 @@
 #*****************************************************************************
 
 #------------------------------------------------------------------------------
-# <Put a Description Here>
+# Build system for compiling and linking multiple source files for
+# both HOST and MSP432 platforms using GCC and GNU Make.
+#
+# File: Makefile
+# Author: Oriol Escolà Serra
+# Date: 27/07/2025
 #
 # Use: make [TARGET] [PLATFORM-OVERRIDES]
 #
 # Build Targets:
-#      <Put a description of the supported targets here>
+#      %.i           - Generate preprocessed output from C source files
+#      %.asm         - Generate assembly output from C source files
+#      %.o           - Compile individual C source files to object files
+#      compile-all   - Compile all object files without linking
+#      build         - Compile and link all source files into the final 
+#                      executable ($<EXECUTABLE>)
+#      clean         - Remove all generated output and build files
 #
 # Platform Overrides:
-#      <Put a description of the supported Overrides here
-#
+#      PLATFORM=HOST     - Use native GCC compiler for host platform
+#      PLATFORM=MSP432   - Use ARM cross-compiler for MSP432 target platform
 #------------------------------------------------------------------------------
+
 include sources.mk
 
-# Platform Overrides
-PLATFORM = 
+# Executable
+EXECUTABLE := c1m2.out
+
+# Clean files
+CLEANFILES := *.map *.out *.asm *.i *.d *.s *.o
+
+# Platform Override
+PLATFORM := $(if $(PLATFORM), $(PLATFORM), HOST)
+
+ifeq ($(PLATFORM), MSP432)
 
 # Architectures Specific Flags
-LINKER_FILE = 
-CPU = 
-ARCH = 
-SPECS = 
+LINKER_FILE = -T ../msp432p401r.lds                       # Linker script
+CPU         = -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16
+ARCH        = -march=armv7e-m                             # Architecture
+SPECS       = -specs=nosys.specs                          # No system specs
 
 # Compiler Flags and Defines
-CC = 
-LD = 
-LDFLAGS = 
-CFLAGS = 
-CPPFLAGs = 
+CC          = arm-none-eabi-gcc                            # Compiler
+LD          = arm-none-eabi-gcc                            # Linker
+LDFLAGS     = $(LINKER_FILE) $(CPU) $(ARCH) $(SPECS)       # Linker flags
+CFLAGS      = -Wall -Werror -g -O0 -std=c99 $(CPU) $(ARCH) # Compiler flags
+CPPFLAGS    = -D$(PLATFORM) $(INCLUDES)                    # Preprocessor flags
 
+else
+
+# Compiler Flags and Defines
+CC          = gcc                                          # Compiler
+LD          = gcc                                          # Linker
+LDFLAGS     =                                              # Linker flags
+CFLAGS      = -Wall -Werror -g -O0 -std=c99                # Compiler flags
+CPPFLAGS    = -D$(PLATFORM) $(INCLUDES)                    # Preprocessor flags
+
+endif
+
+OBJS = $(SOURCES:.c=.o)
+
+# Preprocessing
+%.i : %.c
+	$(CC) $(CPPFLAGS) -E $< -o $@
+
+# Assembly
+%.asm : %.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) -S $< -o $@
+
+# Object files
+%.o : %.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+
+# Compile all
+.PHONY: compile-all
+compile-all: $(OBJS)
+
+# Build
+.PHONY: build
+build: $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJS)
+	$(CC) $(LDFLAGS) -o $@ $^
+
+# Clean
+.PHONY: clean
+clean:
+	rm -f $(CLEANFILES)
