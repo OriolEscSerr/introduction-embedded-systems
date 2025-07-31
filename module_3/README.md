@@ -15,18 +15,18 @@ Topics covered include:
 - Analysis of map files for memory usage  
 - Determining where compiled code and data symbols are allocated, their lifetimes, and access restrictions
 
-As part of the module, I worked with C programs and toolchains to explore how memory is allocated and represented, using tools like GCC and linker scripts to examine memory regions in embedded applications.
+Although no new C programs were written for this module, I engaged with existing code through quizzes.
 
 ## Learning Achievements
 
 As part of this module, I was able to:
 
 - Analyze the components of a program’s memory space for both code and data regions  
-- Write C-programs to define data in different memory regions  
-- Interpret application’s map and linker files  
-- Use GCC Binary Utilities to investigate the memory usage of an executable  
-- Investigate the map file for the memory usage of an executable  
-- Determine where compiled code and data symbols are allocated, the lifetime of these symbols and the access restrictions  
+- Understand how data is defined in different memory regions using C  
+- Interpret application map and linker files  
+- Use GCC Binary Utilities to inspect memory usage in compiled executables  
+- Analyze map files to understand memory allocation  
+- Determine where compiled code and data symbols are located, their lifetimes, and access permissions  
 
 ## Author
 
