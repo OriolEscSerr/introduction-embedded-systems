@@ -1,4 +1,4 @@
-# Module 3 – Memory Systems in Embedded Design
+# Module 3 – Memory Types, Segments and Management
 
 This folder contains my work for **Module 3** of the *Introduction to Embedded Systems Software and Development Environments* course offered by the University of Colorado Boulder.
 
