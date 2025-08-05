@@ -19,7 +19,11 @@
  * @author Alex Fosdick
  * @date April 1 2017
  *
+ * @author Oriol Escolà Serra
+ * @date Aug 5 2025
+ * @brief Added basic memory movement operations
  */
+
 #include "memory.h"
 
 /***********************************************************
@@ -48,3 +52,66 @@ void clear_all(char * ptr, unsigned int size){
   set_all(ptr, 0, size);
 }
 
+/* Basic memory movement options */
+
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length){
+  if(src == dst ||length == 0){
+    return dst;
+  } else if (dst < src || dst >= src + length) {
+    for(size_t i = 0; i < length; i++) {
+      *(dst + i) = *(src + i);
+    }
+  } else {
+    for(size_t i = length; i > 0; i--) {
+      *(dst + i - 1) = *(src + i - 1);
+    }
+  }
+  return dst;
+}
+
+uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length){
+  if(src == dst ||length == 0){
+    return dst;
+  } else {
+    for(size_t i = 0; i < length; i++) {
+      *(dst + i) = *(src + i);
+    }
+    return dst;
+  } 
+}
+
+uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value){
+  for(size_t i = 0; i < length; i++) {
+    *(src + i) = value;
+  }
+  return src;
+}
+
+uint8_t * my_memzero(uint8_t * src, size_t length){
+  for(size_t i = 0; i < length; i++) {
+    *(src + i) = 0;
+  }
+  return src;
+}
+
+uint8_t * my_reverse(uint8_t * src, size_t length){
+  if (length == 0 || src == NULL) return src;
+  uint8_t *start = src;
+  uint8_t *end = src + length - 1;
+  while(start < end){
+    uint8_t temp = *start;
+    *start = *end;
+    *end = *temp;
+    start++;
+    end--;
+  }
+  return src
+}
+
+int32_t * reserve_words(size_t length){
+
+}
+
+void free_words(int32_t * src){
+
+}
