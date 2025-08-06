@@ -31,7 +31,6 @@ char buffer[MAX_LENGTH];
 int main(void) {
   #ifdef COURSE1
     course1();
-    return 0;
   #endif
 
   unsigned int i;
