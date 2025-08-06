@@ -26,6 +26,7 @@
 #ifndef __MEMORY_H__
 #define __MEMORY_H__
 
+#include <stdlib.h>
 #include <stdint.h>
 #include <stddef.h>
 
@@ -192,7 +193,7 @@ int32_t * reserve_words(size_t length);
  *
  * @return void.
  */
-void free_words(int32_t * src);
+void free_words(uint32_t * src);
 
 
 
