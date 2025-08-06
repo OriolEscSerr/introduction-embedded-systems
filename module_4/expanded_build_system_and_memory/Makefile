@@ -69,8 +69,8 @@ else
 CC          = gcc
 LD          = gcc
 LDFLAGS     =
-CFLAGS      = -Wall -Werror -g -O0 -std=c99 -MMD -MP
-CPPFLAGS    = -D$(PLATFORM) $(INCLUDES)
+CFLAGS      = -Wall -Werror -g -O0 -std=c99 -MMD -MP 
+CPPFLAGS    = -D$(PLATFORM) $(INCLUDES) -DCOURSE1 -DVERBOSE
 
 # Tools
 SIZE        = size
