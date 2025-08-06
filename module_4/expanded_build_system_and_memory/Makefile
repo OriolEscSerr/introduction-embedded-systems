@@ -17,6 +17,9 @@
 # Author: Oriol Escolà Serra
 # Date: 27/07/2025
 #
+# Modified by: Oriol Escolà Serra
+# Date: 06/08/2025
+#
 # Use: make [TARGET] [PLATFORM-OVERRIDES]
 #
 # Build Targets:
@@ -36,16 +39,16 @@
 include sources.mk
 
 # Executable
-EXECUTABLE := c1m2.out
-MAPFILE := c1m2.map
+EXECUTABLE := c1m4.out
+MAPFILE := c1m4.map
 
 # Clean files
-CLEANFILES := *.map *.out *.asm *.i *.d *.s *.o
+CLEANFILES := *.map *.out src/*.asm src/*.i src/*.d src/*.s src/*.o
 
 ifeq ($(PLATFORM), MSP432)
 
 # Architectures Specific Flags
-LINKER_FILE = -T ../msp432p401r.lds
+LINKER_FILE = -T msp432p401r.lds
 CPU         = -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16
 ARCH        = -march=armv7e-m
 SPECS       = -specs=nosys.specs
