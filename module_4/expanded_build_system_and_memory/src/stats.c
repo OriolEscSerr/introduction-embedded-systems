@@ -27,23 +27,25 @@
 #define SIZE (40)
 
 void print_statistics(int min, int max, double mean, double median) {
-  PRINTF("Statistics:\n\n");
-  PRINTF("Minimum: %d\n", min);
-  PRINTF("Maximum: %d\n", max);
-  PRINTF("Mean:    %g\n", mean);
-  PRINTF("Median:  %g\n", median);
+#ifdef VERBOSE
+  printf("Statistics:\n\n");
+  printf("Minimum: %d\n", min);
+  printf("Maximum: %d\n", max);
+  printf("Mean:    %g\n", mean);
+  printf("Median:  %g\n", median);
+#endif
 }
 
 void print_array(unsigned char *array, unsigned int length) {
 #ifdef VERBOSE
   for (unsigned int i = 0; i < length; i++) {
     if (i != length - 1) {
-      PRINTF("%d, ", array[i]);
+      printf("%d, ", array[i]);
     } else {
-      PRINTF("%d", array[i]); // Last element without comma
+      printf("%d", array[i]); // Last element without comma
     }
   }
-  PRINTF("\n\n");
+  printf("\n\n");
 #endif
 }
 
