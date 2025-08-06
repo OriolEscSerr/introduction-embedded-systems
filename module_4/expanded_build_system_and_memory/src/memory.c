@@ -101,11 +101,11 @@ uint8_t * my_reverse(uint8_t * src, size_t length){
   while(start < end){
     uint8_t temp = *start;
     *start = *end;
-    *end = *temp;
+    *end = temp;
     start++;
     end--;
   }
-  return src
+  return src;
 }
 
 int32_t * reserve_words(size_t length){
