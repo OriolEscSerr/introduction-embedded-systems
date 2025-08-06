@@ -23,6 +23,8 @@
 #ifndef __STATS_H__
 #define __STATS_H__
 
+#include <stdint.h>
+
 /**
  * @brief Prints the statistics of an array.
  *
@@ -99,9 +101,9 @@ int find_maximum(unsigned char *array, unsigned int length);
 int find_minimum(unsigned char *array, unsigned int length);
 
 /**
- * @brief Sorts an array.
+ * @brief Sorts an array in descending order.
  *
- * Sorts an array from largest to smallest using a simple sorting algorithm.
+ * This function sorts an array of data in descending order.
  *
  * @param array Pointer to the array of data.
  * @param length Number of elements in the array.
@@ -109,5 +111,15 @@ int find_minimum(unsigned char *array, unsigned int length);
  * @return void
  */
 void sort_array(unsigned char *array, unsigned int length);
+
+/**
+ * @brief Demonstrates the statistics functions on a test array.
+ *
+ * This function demonstrates the use of the statistics functions (mean, median,
+ * maximum, minimum) on a predefined test array.
+ *
+ * @return void
+ */
+void stats_demo();
 
 #endif /* __STATS_H__ */

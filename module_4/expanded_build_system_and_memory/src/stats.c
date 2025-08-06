@@ -21,28 +21,30 @@
  */
 
 #include "stats.h"
-#include <stdio.h>
+#include "platform.h"
 
 /* Size of the Data Set */
 #define SIZE (40)
 
 void print_statistics(int min, int max, double mean, double median) {
-  printf("Statistics:\n\n");
-  printf("Minimum: %d\n", min);
-  printf("Maximum: %d\n", max);
-  printf("Mean:    %g\n", mean);
-  printf("Median:  %g\n", median);
+  PRINTF("Statistics:\n\n");
+  PRINTF("Minimum: %d\n", min);
+  PRINTF("Maximum: %d\n", max);
+  PRINTF("Mean:    %g\n", mean);
+  PRINTF("Median:  %g\n", median);
 }
 
 void print_array(unsigned char *array, unsigned int length) {
+#ifdef VERBOSE
   for (unsigned int i = 0; i < length; i++) {
     if (i != length - 1) {
-      printf("%d, ", array[i]);
+      PRINTF("%d, ", array[i]);
     } else {
-      printf("%d", array[i]); // Last element without comma
+      PRINTF("%d", array[i]); // Last element without comma
     }
   }
-  printf("\n\n");
+  PRINTF("\n\n");
+#endif
 }
 
 double find_median(unsigned char *array, unsigned int length) {
@@ -94,35 +96,6 @@ void sort_array(unsigned char *array, unsigned int length) {
       }
     }
   }
-}
-
-void main() {
-
-  unsigned char test[SIZE] = {34, 201, 190, 154, 8,   194, 2,   6,   114, 88,
-                              45, 76,  123, 87,  25,  23,  200, 122, 150, 90,
-                              92, 87,  177, 244, 201, 6,   12,  60,  8,   2,
-                              5,  67,  7,   87,  250, 230, 99,  3,   100, 90};
-
-  /* Other Variable Declarations  */
-
-  int min, max;
-  double mean, median;
-
-  /* Statistics and Printing Functions */
-
-  printf("\nArray:\n");
-  print_array(test, SIZE);
-
-  printf("Sorted Array:\n");
-  sort_array(test, SIZE);
-  print_array(test, SIZE);
-
-  min = find_minimum(test, SIZE);
-  max = find_maximum(test, SIZE);
-  mean = find_mean(test, SIZE);
-  median = find_median(test, SIZE);
-  print_statistics(min, max, mean, median);
-  printf("\n");
 }
 
 /* Other Implementation File Code */
