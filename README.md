@@ -22,14 +22,20 @@ The course consists of **4 modules**, including quizzes and peer-reviewed assign
 
 ```
 ├── module_1        # Embedded System Development Components
-├── module_2        # GCC and GNU Make build systems
-├── module_3        # Memory types, segments, and management
-└── module_4        # Final project: build system + memory manipulation firmware
+├── module_2        # Compilations with GCC and GNU Make
+├── module_3        # Memory Types, Segments and Management
+└── module_4        # Course 1 Final Assessment
 ```
 
 ## Certificate of Completion
+<br/>
 
-*(to be added)*  
+<div align="center">
+    <a href="https://www.coursera.org/account/accomplishments/verify/KM53P1OCS2EQ">
+        <img src="./certificate.png" alt="Certificate" width="900" />
+    </a>
+</div>
+
 
 ## Author
 
