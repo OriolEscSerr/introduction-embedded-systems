@@ -32,7 +32,7 @@ The course consists of **4 modules**, including quizzes and peer-reviewed assign
 
 <div align="center">
     <a href="https://www.coursera.org/account/accomplishments/verify/KM53P1OCS2EQ">
-        <img src="./certificate.png" alt="Certificate" width="900" />
+        <img src="./certificate.png" alt="Certificate" width="600" />
     </a>
 </div>
 
