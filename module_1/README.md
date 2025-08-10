@@ -1,4 +1,4 @@
-# Module 1 – Embedded Systems Development Components
+# Module 1 – Embedded System Development Components
 
 This folder contains my work for **Module 1** of the *Introduction to Embedded Systems Software and Development Environments* course offered by the University of Colorado Boulder.
 
